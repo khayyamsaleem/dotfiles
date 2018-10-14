@@ -34,7 +34,7 @@ set incsearch
 set hlsearch
 set scrolloff=1
 set undofile
-colorscheme tomorrow-night-eighties
+colorscheme Tomorrow-Night-Eighties
 
 " inoremap <Left>  <NOP>
 " inoremap <Right> <NOP>
@@ -127,8 +127,3 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
-" ## added by OPAM user-setup for vim / ocp-indent ## 0c7ccd80b9402756984390c340054fae ## you can edit, but keep this line
-if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/Users/khayyamsaleem/.opam/4.05.0/share/vim/syntax/ocp-indent.vim"
-endif
-" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line

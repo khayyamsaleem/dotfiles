@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 
-export ZSH=/Users/khayyamsaleem/.oh-my-zsh
+export ZSH=/home/khayyamsaleem/.oh-my-zsh
 
 DEFAULT_USER=khayyamsaleem
 # Set name of the theme to load.
@@ -51,11 +51,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(sudo extract zsh-autosuggestions osx chucknorris hub colored-man adb git brew zsh-syntax-highlighting)
+plugins=(sudo extract zsh-autosuggestions chucknorris hub colored-man adb git brew zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Applications/Racket v6.7/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
 
@@ -66,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-export EDITOR='mvim'
+export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -84,60 +83,30 @@ export EDITOR='mvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-fortune -o -s
-alias fb='open https://facebook.com'
-alias github="open http://github.com/khayyamsaleem"
-# function stevens () {
-#     if [[ $1 = "-u" ]]; then
-#         echo "unmounting"
-#         cd
-#         sudo umount /Volumes/stevens
-#     else
-#          echo "mounting";
-#          mkdir /Volumes/stevens/
-#          mount -t smbfs //ksaleem@storage01.stevens.edu/ms/ /Volumes/stevens/
-#          cd /Volumes/stevens/
-#      fi
-# }
+alias fb='xdg-open https://facebook.com'
+alias github="xdg-open http://github.com/khayyamsaleem"
 
 alias phploc="php -S localhost:8000 -t . &;"
 alias dog="pygmentize -g"
 alias ll="ssh ksaleem@linux-lab.cs.stevens.edu"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/khayyamsaleem/.sdkman"
-[[ -s "/Users/khayyamsaleem/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/khayyamsaleem/.sdkman/bin/sdkman-init.sh"
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PKG_CONFIG_PATH=/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH
 function mconvert () {
     ffmpeg -i $2 -vcodec copy -acodec copy $2.$1
 }
 alias emacs="emacs -nw"
 
-#ZPLUG STUFF
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-alias catimg="imgcat"
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
-
-# OPAM configuration
-. /Users/khayyamsaleem/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
     tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
 # https://gist.github.com/800227d0ef3324a3f68cdfd1a2cb5f00
 # https://gist.github.com/0a3be946dd3824b520e3cb06c2d453fe
-export PATH="/usr/local/opt/elasticsearch@5.6/bin:$PATH"
-export PATH="/usr/local/texlive/2018/bin/x86_64-darwin:$PATH"
-export MEDACCESS_CONFIG=/Users/khayyamsaleem/dev/medaccess/settings.cfg
-export PATH="$HOME/.meteor:$HOME/Library/Haskell/bin:$PATH"
-# alias emacs='/usr/local/bin/emacs -nw $1'
-export PATH=~/dev/flutter/bin:$PATH
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk":
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
 
+export PATH=$PATH:/snap/bin
+source /home/khayyamsaleem/dev/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+export TERM="screen-256color"
+
+# OPAM configuration
+. /home/khayyamsaleem/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
